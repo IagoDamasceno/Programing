@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Relatório de Ocorrência</title>
+</head>
+<body>
+    <form id="loginForm">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
+        <button type="button" onclick="login()">Entrar</button>
+        <p id="loginError" class="error"></p>
+    </form>
+
+    <form id="reportForm" style="display: none;">
+        <h2>Relatório de Ocorrência</h2>
+        <input type="text" id="nome" placeholder="Nome" required>
+        <input type="text" id="chapa" placeholder="Chapa" required>
+        <input type="date" id="data" required>
+        <input type="text" id="ordem" placeholder="Ordem de Serviço" required>
+        
+        <h3>Tipo de Ocorrência</h3>
+        <select id="tipoOcorrencia" required>
+            <option value="">Selecione...</option>
+            <option value="seguranca">Segurança</option>
+            <option value="meioAmbiente">Meio Ambiente</option>
+            <option value="direitoRecusa">Direito de Recusa</option>
+        </select>
+        
+        <div id="subtipoSeguranca" class="subtipo" style="display: none;">
+            <h4>Segurança</h4>
+            <label><input type="radio" name="subtipo" value="desvio"> Desvio</label>
+            <label><input type="radio" name="subtipo" value="incidente"> Incidente</label>
+        </div>
+        
+        <div id="subtipoMeioAmbiente" class="subtipo" style="display: none;">
+            <h4>Meio Ambiente</h4>
+            <label><input type="radio" name="subtipo" value="aspecto"> Aspecto</label>
+            <label><input type="radio" name="subtipo" value="impacto"> Impacto</label>
+        </div>
+
+        <h3>Detalhes do Evento</h3>
+        <input type="text" id="local" placeholder="Local onde observou-se o evento/ocorrência" required>
+        <textarea id="descricao" placeholder="Descrição do Evento" required></textarea>
+        <textarea id="acao" placeholder="Ação Tomada" required></textarea>
+        <textarea id="recomendacao" placeholder="Recomendação" required></textarea>
+
+        <div>
+            <label><input type="radio" name="status" value="resolvido"> Resolvido</label>
+            <label><input type="radio" name="status" value="pendente"> Pendente</label>
+        </div>
+
+        <button type="submit">Enviar</button>
+        <p id="submitMessage"></p>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
