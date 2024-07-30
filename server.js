@@ -80,6 +80,7 @@ app.post('/submit', async (req, res) => {
         await pool.query(query, values);
         console.log('Dados inseridos com sucesso no banco de dados.');
 
+
         // Enviar e-mail
         const mailOptions = {
             from: `"Sistema de Ocorrências" <${process.env.EMAIL_USER}>`,
