@@ -28,6 +28,27 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+// Rota de login
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const result = await pool.query(
+            'SELECT * FROM users WHERE username = $1 AND password = $2',
+            [username, password]
+        );
+
+        if (result.rows.length > 0) {
+            res.status(200).send('Login bem-sucedido');
+        } else {
+            res.status(401).send('Usuário ou senha incorretos');
+        }
+    } catch (err) {
+        console.error('Erro ao fazer login:', err);
+        res.status(500).send('Erro ao processar login');
+    }
+});
+
 // Rota para processar o envio do formulário
 app.post('/submit', async (req, res) => {
     const {
@@ -62,7 +83,7 @@ app.post('/submit', async (req, res) => {
         // Enviar e-mail
         const mailOptions = {
             from: `"Sistema de Ocorrências" <${process.env.EMAIL_USER}>`,
-            to: 'raquel.silva@convaco.com.br, iago.assis@convaco.com.br',
+            to: 'iago.assis@convaco.com.br, raquel.silva@convaco.com.br',
             subject: 'Novo Relatório de Ocorrência',
             text: `Um novo relatório foi submetido:\n\nNome: ${nome}\nChapa: ${chapa}\nData: ${data}\nOrdem de Serviço: ${ordem_de_servico}\nTipo de Ocorrência: ${tipo_ocorrencia}\nLocal Observado: ${local_observado}\nDescrição: ${descricao_evento}\nAção Tomada: ${acao_tomada}\nRecomendação: ${recomendacao}\nStatus: ${status}`
         };
