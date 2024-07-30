@@ -1,16 +1,16 @@
 {
-  "name": "security-occurrence",
+  "name": "ocorrencias",
   "version": "1.0.0",
-  "description": "Security occurrence report system",
+  "description": "Sistema de Relatórios de Ocorrências",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "pg": "^8.7.1",
-    "nodemailer": "^6.6.3",
-    "body-parser": "^1.19.0",
-    "dotenv": "^10.0.0"
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.1",
+    "pg": "^8.8.0"
   }
 }

@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 
 // Configuração do pool de conexão com o banco de dados
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL, // URL do banco de dados
+    connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false }
 });
 
@@ -64,7 +64,6 @@ app.post('/submit', async (req, res) => {
         status
     } = req.body;
 
-    // Inserir dados no banco de dados
     try {
         const query = `
             INSERT INTO reports (
@@ -79,7 +78,6 @@ app.post('/submit', async (req, res) => {
 
         await pool.query(query, values);
         console.log('Dados inseridos com sucesso no banco de dados.');
-
 
         // Enviar e-mail
         const mailOptions = {
