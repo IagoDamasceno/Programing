@@ -25,28 +25,35 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
     });
 });
 
-document.getElementById('report-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    
+document.getElementById('report-form').addEventListener('submit', function (event) {
+    event.preventDefault();
+
     const formData = new FormData(this);
-    const data = {};
-    
-    formData.forEach((value, key) => {
-        data[key] = value;
-    });
 
     fetch('/submit', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
+        body: formData
     })
     .then(response => response.text())
     .then(message => {
         alert(message);
+        this.reset(); // Redefinir o formulário
     })
     .catch(error => {
         console.error('Erro:', error);
     });
 });
+
+document.getElementById('logout-button').addEventListener('click', function () {
+    fetch('/logout', {
+        method: 'POST'
+    })
+    .then(() => {
+        document.getElementById('form-container').style.display = 'none';
+        document.getElementById('login-form').style.display = 'block';
+    })
+    .catch(error => {
+        console.error('Erro ao fazer logout:', error);
+    });
+});
+

@@ -1,5 +1,4 @@
-/* style.css */
-
+/* Estilos gerais para o corpo da página */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f0f2f5;
@@ -12,6 +11,7 @@ body {
     min-height: 100vh;
 }
 
+/* Estilos para o título */
 h1 {
     color: #333;
     margin-bottom: 20px;
@@ -19,6 +19,7 @@ h1 {
     text-align: center;
 }
 
+/* Estilos para os formulários */
 form {
     background-color: #fff;
     padding: 20px;
@@ -29,6 +30,7 @@ form {
     margin: 10px;
 }
 
+/* Estilos para labels dos campos do formulário */
 label {
     display: block;
     margin-bottom: 5px;
@@ -36,11 +38,13 @@ label {
     font-weight: bold;
 }
 
+/* Estilos para inputs, selects e textareas */
 input[type="text"],
 input[type="password"],
 input[type="date"],
 textarea,
-select {
+select,
+input[type="file"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -50,6 +54,7 @@ select {
     font-size: 14px;
 }
 
+/* Estilos específicos para o botão de envio */
 button {
     width: 100%;
     padding: 12px;
@@ -62,10 +67,12 @@ button {
     font-weight: bold;
 }
 
+/* Estilos para o botão em estado de hover */
 button:hover {
     background-color: #0056b3;
 }
 
+/* Estilos para mensagens de erro */
 #error-message {
     color: red;
     font-size: 14px;
@@ -74,6 +81,17 @@ button:hover {
     display: none;
 }
 
+/* Estilos para o botão de logout */
+#logout-button {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+#logout-button:hover {
+    background-color: #e31e14;
+}
+
+/* Estilos responsivos para telas menores */
 @media (max-width: 600px) {
     form {
         padding: 15px;
@@ -82,4 +100,26 @@ button:hover {
     button {
         font-size: 14px;
     }
+}
+
+/* Estilos específicos para o upload de imagens */
+input[type="file"] {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #fafafa;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #0056b3;
 }
