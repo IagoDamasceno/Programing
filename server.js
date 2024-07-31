@@ -87,8 +87,6 @@ app.post('/submit', async (req, res) => {
             text: `Um novo relatório foi submetido:\n\nNome: ${nome}\nChapa: ${chapa}\nData: ${data}\nOrdem de Serviço: ${ordem_de_servico}\nTipo de Ocorrência: ${tipo_ocorrencia}\nLocal Observado: ${local_observado}\nDescrição: ${descricao_evento}\nAção Tomada: ${acao_tomada}\nRecomendação: ${recomendacao}\nStatus: ${status}`
         };
 
-        await transporter.sendMail(mailOptions);
-        console.log('E-mail enviado com sucesso.');
 
         res.status(200).send('Relatório salvo e e-mail enviado.');
     } catch (err) {
